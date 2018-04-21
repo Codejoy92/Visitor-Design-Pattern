@@ -22,12 +22,14 @@ public class AlgorithmEngineer {
     private ProductFour productFour = new ProductFour();
 
     private int exactMatchedKeywords = 0;
+    private int naiveStemmingMatches = 0;
+    private int semanticMatches = 0;
 
     public AlgorithmEngineer() { }
 
     public void matchExactly(String keyword, Product productType) {
 
-        String[] tokens = tokenizeKeyword(keyword);
+        //String[] tokens = tokenizeKeyword(keyword);
 
         if (productType.equals(Product.ONE)) productList = productOne.getProductOneList();
         if (productType.equals(Product.TWO)) productList = productTwo.getProductTwoList();
@@ -48,9 +50,10 @@ public class AlgorithmEngineer {
         }
     }
 
-    public void matchSemantically(String keyword) {
+    public void matchSemantically(String keyword, Product productType) {
 
         String[] tokens = tokenizeKeyword(keyword);
+        String lastIndexToken = tokens[tokens.length - 1];
 /**
  * This for loop scans a particular product's ArrayList.
  */
@@ -75,8 +78,29 @@ public class AlgorithmEngineer {
         }
     }
 
-    public void matchByNaiveStemming(String keyword) {
+    public void matchByNaiveStemming(String keyword, Product productType) {
 
+        String[] tokens = tokenizeKeyword(keyword);
+
+
+        if (productType.equals(Product.ONE)) productList = productOne.getProductOneList();
+        if (productType.equals(Product.TWO)) productList = productTwo.getProductTwoList();
+        if (productType.equals(Product.THREE)) productList = productThree.getProductThreeList();
+        if (productType.equals(Product.FOUR)) productList = productFour.getProductFourList();
+
+        for (String token: tokens) {
+            if(!productList.isEmpty()) {
+                for (String line: productList) {
+                    if (line.matches("(.*)"+ token +"(.*)")) {
+                        sb.append("Naive Stemming Match: ");
+                        sb.append(System.getProperty("line.separator"));
+                        sb.append("Line: "+ line + " Matched word: " + keyword);
+                        sb.append(System.getProperty("line.separator"));
+                        naiveStemmingMatches++;
+                    }
+                }
+            }
+        }
     }
 
     public String[] tokenizeKeyword(String keyword) {
@@ -84,7 +108,6 @@ public class AlgorithmEngineer {
         String[] tokens = new String[0];
         if(!keyword.equals("") && !keyword.equals(" ")) {
             tokens = keyword.split(" ");
-
         }
         return tokens;
     }
