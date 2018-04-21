@@ -42,7 +42,7 @@ public class AlgorithmEngineer {
                     // There's an exact match for the given keyword in the line.
                     sb.append("Exact Match: ");
                     sb.append(System.getProperty("line.separator"));
-                    sb.append("Matched word: " + keyword);
+                    sb.append("Line: "+ line + " Matched word: " + keyword);
                     sb.append(System.getProperty("line.separator"));
                     exactMatchedKeywords++;
                 }
@@ -53,26 +53,26 @@ public class AlgorithmEngineer {
     public void matchSemantically(String keyword, Product productType) {
 
         String[] tokens = tokenizeKeyword(keyword);
-        String lastIndexToken = tokens[tokens.length - 1];
-/**
- * This for loop scans a particular product's ArrayList.
- */
-        for (String line: productList) {
-            String[] lineTokens = tokenizeWords(line);
-/**
- * This for loop scans through the tokens obtained from the keywords passed by user.
- */
-            for (String token: tokens) {
-/**
- * This for loop scans through the tokens obtained from a line from the ArrayList.
- */
-                for(String lineToken: lineTokens) {
-/**
- * Now we check if a keyword matches a word from the ArrayList's words (lineTokens).
- */
-                    if ((!token.equals("") && !lineToken.equals("")) && token.equals(lineToken)) {
+        String lastToken = tokens[tokens.length - 1];
+        String synonym = "";
+        if (AlgorithmEngineer.synonymsMap.containsKey(lastToken)) {
+            synonym = AlgorithmEngineer.synonymsMap.get(lastToken);
+        }
 
-                    }
+        if (productType.equals(Product.ONE)) productList = productOne.getProductOneList();
+        if (productType.equals(Product.TWO)) productList = productTwo.getProductTwoList();
+        if (productType.equals(Product.THREE)) productList = productThree.getProductThreeList();
+        if (productType.equals(Product.FOUR)) productList = productFour.getProductFourList();
+
+
+        if (!productList.isEmpty()) {
+            for (String line : productList) {
+                if (line.matches("(.*)" + synonym + "(.*)")) {
+                    sb.append("Semantic Match: ");
+                    sb.append(System.getProperty("line.separator"));
+                    sb.append("Line: " + line + " Matched word: " + keyword);
+                    sb.append(System.getProperty("line.separator"));
+                    semanticMatches++;
                 }
             }
         }
@@ -81,7 +81,6 @@ public class AlgorithmEngineer {
     public void matchByNaiveStemming(String keyword, Product productType) {
 
         String[] tokens = tokenizeKeyword(keyword);
-
 
         if (productType.equals(Product.ONE)) productList = productOne.getProductOneList();
         if (productType.equals(Product.TWO)) productList = productTwo.getProductTwoList();
@@ -121,13 +120,6 @@ public class AlgorithmEngineer {
         return lineTokens;
     }
 
-    public boolean matchSynonym(String keyword) {
-
-        if(!keyword.equals("")) {
-
-        }
-        return true;
-    }
 
     public int getExactMatchedKeywords() {
         return exactMatchedKeywords;
@@ -135,5 +127,21 @@ public class AlgorithmEngineer {
 
     public void setExactMatchedKeywords(int exactMatchedKeywordsIn) {
         exactMatchedKeywords = exactMatchedKeywordsIn;
+    }
+
+    public int getNaiveStemmingMatches() {
+        return naiveStemmingMatches;
+    }
+
+    public void setNaiveStemmingMatches(int naiveStemmingMatches) {
+        this.naiveStemmingMatches = naiveStemmingMatches;
+    }
+
+    public int getSemanticMatches() {
+        return semanticMatches;
+    }
+
+    public void setSemanticMatches(int semanticMatches) {
+        this.semanticMatches = semanticMatches;
     }
 }
