@@ -7,7 +7,9 @@ public class FileProcessor {
 
     private Scanner scanner = null;
 
-    FileProcessor() { }
+    FileProcessor() {
+    	MyLogger.writeMessage("Inside FileProcessor Constructor", MyLogger.DebugLevel.CONSTRUCTOR);
+    }
 
     /**
      * Constructor for FileProcessor; takes in the file path and initializes the scanner with it.
@@ -95,21 +97,21 @@ public class FileProcessor {
                 count++;
             }
             scanner.close();
-        } else if (fileType.equals(FileType.SYNONYM)){
+        } else if (fileType.equals(FileType.SYNONYM)) {
             AlgorithmEngineer algorithmEngineer = new AlgorithmEngineer();
             // Read synonyms from the file.
             while(hasNextLine()) {
                 String[] tokens = algorithmEngineer.tokenizeWords(getNextLine());
-                String key = tokens[0];
-                String value = tokens[1];
+                String key = tokens[0].trim();
+                String value = tokens[1].trim();
                 AlgorithmEngineer.synonymsMap.put(key, value);
             }
             scanner.close();
+        } else if (fileType.equals(FileType.KEYWORD)) {
+            while(hasNextLine()) {
+                AlgorithmEngineer.keywordList.add(getNextLine());
+            }
         }
-
-
-
-
     }
 
     /**

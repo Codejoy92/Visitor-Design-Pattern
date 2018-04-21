@@ -4,26 +4,40 @@ public class SemanticMatch implements VisitorI {
 
     AlgorithmEngineer algorithmEngineer = new AlgorithmEngineer();
 
-    public SemanticMatch() {}
+    public SemanticMatch() {
+    	MyLogger.writeMessage("Inside SemanticMatch Constructor", MyLogger.DebugLevel.CONSTRUCTOR);
+    }
 
     @Override
     public void visit(ProductOne productOne) {
-        algorithmEngineer.matchSemantically("compatible CPU", Product.ONE);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchSemantically(keyword , Product.ONE);
+        }
     }
 
     @Override
     public void visit(ProductTwo productTwo) {
-        algorithmEngineer.matchSemantically("compatible CPU", Product.TWO);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchSemantically(keyword, Product.TWO);
+        }
     }
 
     @Override
     public void visit(ProductThree productThree) {
-        algorithmEngineer.matchSemantically("compatible CPU", Product.THREE);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchSemantically(keyword, Product.THREE);
+        }
     }
 
     @Override
     public void visit(ProductFour productFour) {
-        algorithmEngineer.matchSemantically("compatible CPU", Product.FOUR);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchSemantically(keyword, Product.FOUR);
+        }
     }
 
     @Override

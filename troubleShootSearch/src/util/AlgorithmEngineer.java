@@ -14,6 +14,7 @@ public class AlgorithmEngineer {
 
     public static StringBuilder sb = new StringBuilder();
     public static Map<String, String> synonymsMap = new HashMap<String, String>();
+    public static List<String> keywordList = new ArrayList<String>();
 
     public List<String> productList = new ArrayList<String>();
     private ProductOne productOne = new ProductOne();
@@ -21,9 +22,9 @@ public class AlgorithmEngineer {
     private ProductThree productThree = new ProductThree();
     private ProductFour productFour = new ProductFour();
 
-    private int exactMatchedKeywords = 0;
-    private int naiveStemmingMatches = 0;
-    private int semanticMatches = 0;
+    public static int exactMatchedKeywords = 0;
+    public static int naiveStemmingMatches = 0;
+    public static int semanticMatches = 0;
 
     public AlgorithmEngineer() { }
 
@@ -64,15 +65,15 @@ public class AlgorithmEngineer {
         if (productType.equals(Product.THREE)) productList = productThree.getProductThreeList();
         if (productType.equals(Product.FOUR)) productList = productFour.getProductFourList();
 
-
         if (!productList.isEmpty()) {
             for (String line : productList) {
-                if (line.matches("(.*)" + synonym + "(.*)")) {
+                if (line.matches("(.*)" + synonym + "(.*)") && !synonym.equals("")) {
                     sb.append("Semantic Match: ");
                     sb.append(System.getProperty("line.separator"));
                     sb.append("Line: " + line + " Matched word: " + keyword);
                     sb.append(System.getProperty("line.separator"));
                     semanticMatches++;
+                    MyLogger.writeMessage("Semantic Match", MyLogger.DebugLevel.SEMANTIC_FOUND);
                 }
             }
         }
@@ -90,7 +91,7 @@ public class AlgorithmEngineer {
         for (String token: tokens) {
             if(!productList.isEmpty()) {
                 for (String line: productList) {
-                    if (line.matches("(.*)"+ token +"(.*)")) {
+                    if (line.matches("(.*)"+ token +"(.*)") && !token.equals("")) {
                         sb.append("Naive Stemming Match: ");
                         sb.append(System.getProperty("line.separator"));
                         sb.append("Line: "+ line + " Matched word: " + keyword);
@@ -115,7 +116,7 @@ public class AlgorithmEngineer {
 
         String[] lineTokens = new String[0];
         if (!line.equals("") && !line.equals(" ")) {
-            lineTokens = line.split(" |:");
+            lineTokens = line.split(":| :|: | : ");
         }
         return lineTokens;
     }

@@ -4,26 +4,40 @@ public class ExactMatch implements VisitorI {
 
     AlgorithmEngineer algorithmEngineer = new AlgorithmEngineer();
 
-    public ExactMatch() { }
+    public ExactMatch() { 
+    	MyLogger.writeMessage("Inside ExactMatch Constructor", MyLogger.DebugLevel.CONSTRUCTOR);
+    }
 
     @Override
     public void visit(ProductOne productOne) {
-        algorithmEngineer.matchExactly("problem detecting", Product.ONE);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchExactly(keyword, Product.ONE);
+        }
     }
 
     @Override
     public void visit(ProductTwo productTwo) {
-        algorithmEngineer.matchExactly("problem detecting", Product.TWO);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchExactly(keyword, Product.TWO);
+        }
     }
 
     @Override
     public void visit(ProductThree productThree) {
-        algorithmEngineer.matchExactly("problem detecting", Product.THREE);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchExactly(keyword, Product.THREE);
+        }
     }
 
     @Override
     public void visit(ProductFour productFour) {
-        algorithmEngineer.matchExactly("problem detecting", Product.FOUR);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchExactly(keyword, Product.FOUR);
+        }
     }
 
     @Override

@@ -5,26 +5,40 @@ public class NaiveStemmingMatch implements VisitorI {
 
     AlgorithmEngineer algorithmEngineer = new AlgorithmEngineer();
 
-    public NaiveStemmingMatch() {}
+    public NaiveStemmingMatch() {
+    	MyLogger.writeMessage("Inside NaiveStemmingMatch Constructor", MyLogger.DebugLevel.CONSTRUCTOR);
+    }
 
     @Override
     public void visit(ProductOne productOne) {
-        algorithmEngineer.matchByNaiveStemming("detect error", Product.ONE);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchByNaiveStemming(keyword, Product.ONE);
+        }
     }
 
     @Override
     public void visit(ProductTwo productTwo) {
-        algorithmEngineer.matchByNaiveStemming("detect error", Product.TWO);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchByNaiveStemming(keyword, Product.TWO);
+        }
     }
 
     @Override
     public void visit(ProductThree productThree) {
-        algorithmEngineer.matchByNaiveStemming("detect error", Product.THREE);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchByNaiveStemming(keyword, Product.THREE);
+        }
     }
 
     @Override
     public void visit(ProductFour productFour) {
-        algorithmEngineer.matchByNaiveStemming("detect error", Product.FOUR);
+
+        for (String keyword: AlgorithmEngineer.keywordList) {
+            algorithmEngineer.matchByNaiveStemming(keyword, Product.FOUR);
+        }
     }
 
     @Override
