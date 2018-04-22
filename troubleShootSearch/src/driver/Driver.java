@@ -1,6 +1,12 @@
 package driver;
 
-import util.*;
+import util.DSeaGate;
+import util.ExactMatchVisitor;
+import util.FileProcessor;
+import util.FileType;
+import util.NaiveStemmingMatchVisitor;
+import util.Results;
+import util.SemanticMatchVisitor;
 
 public class Driver {
 
@@ -19,29 +25,28 @@ public class Driver {
 
         //if (validate(args)) {
             buildInput(args);
-            dSeaGate dSeaGateProducts = new dSeaGate();
+            DSeaGate dSeaGateProducts = new DSeaGate();
 
-            ExactMatch exactMatch = new ExactMatch();
-            SemanticMatch semanticMatch = new SemanticMatch();
-            NaiveStemmingMatch naiveStemmingMatch = new NaiveStemmingMatch();
+            ExactMatchVisitor exactMatch = new ExactMatchVisitor();
+            SemanticMatchVisitor semanticMatch = new SemanticMatchVisitor();
+            NaiveStemmingMatchVisitor naiveStemmingMatch = new NaiveStemmingMatchVisitor();
 
-            dSeaGateProducts.initializeChildren();
             dSeaGateProducts.accept(exactMatch);
             dSeaGateProducts.accept(semanticMatch);
             dSeaGateProducts.accept(naiveStemmingMatch);
 
-            System.out.println(AlgorithmEngineer.sb);
+            System.out.println(Results.sb);
         //}
     }
 
     private static void buildInput(String[] args) {
 
+        FileProcessor fileProcessorKeywords = new FileProcessor(args[0]);
+        fileProcessorKeywords.fillLists(FileType.KEYWORD);
         FileProcessor fileProcessorInputTxt = new FileProcessor(args[1]);   //args[1] is input1.txt
         fileProcessorInputTxt.fillLists(FileType.INPUT);
         FileProcessor fileProcessorSynonyms = new FileProcessor(args[2]);
         fileProcessorSynonyms.fillLists(FileType.SYNONYM);
-
-
     }
 
     /**
