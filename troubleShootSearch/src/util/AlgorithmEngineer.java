@@ -46,6 +46,7 @@ public class AlgorithmEngineer {
                     sb.append("Line: "+ line + " Matched word: " + keyword);
                     sb.append(System.getProperty("line.separator"));
                     exactMatchedKeywords++;
+                    
                 }
             }
         }
