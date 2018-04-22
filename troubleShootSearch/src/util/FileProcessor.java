@@ -57,12 +57,14 @@ public class FileProcessor {
     public void fillLists(FileType fileType) {
 
         if (fileType.equals(FileType.INPUT)) {
-            ProductOne productOne = null;
-            ProductTwo productTwo = null;
-            ProductThree productThree = null;
-            ProductFour productFour = null;
 
-            dSeaGate product = new ProductOne();                  // The product object variable is initialized for ProductOne.
+            DSeaGate productOne = new ProductOne();
+            DSeaGate productTwo = new ProductTwo();
+            DSeaGate productThree = new ProductThree();
+            DSeaGate productFour = new ProductFour();
+
+            // The product object variable is initialized for ProductOne.
+            DSeaGate product = productOne;
 
             String fileLine = "";
             int count = 0;
@@ -75,14 +77,19 @@ public class FileProcessor {
                  */
                 if (count != 0 && (count % 6 == 0)) {
                     if (product instanceof ProductOne) {
-                        product = new ProductTwo();
+                        DSeaGate.addChild(product);
+                        product = productTwo;
                     } else if (product instanceof ProductTwo) {
-                        product = new ProductThree();
+                        DSeaGate.addChild(product);
+                        product = productThree;
                     } else if (product instanceof ProductThree) {
-                        product = new ProductFour();
+                        DSeaGate.addChild(product);
+                        product = productFour;
                     }
                 }
 
+                product.getProductList().add(fileLine);
+                /*
                 if (product instanceof ProductOne) {
                     ((ProductOne) product).getProductOneList().add(fileLine);
                 } else if (product instanceof ProductTwo) {
@@ -92,24 +99,31 @@ public class FileProcessor {
                 } else if (product instanceof ProductFour) {
                     ((ProductFour) product).getProductFourList().add(fileLine);
                 }
+                */
                 count++;
             }
+            if (product instanceof ProductFour) {
+
+                DSeaGate.addChild(product);
+            }
+
             scanner.close();
-        } else if (fileType.equals(FileType.SYNONYM)){
-            AlgorithmEngineer algorithmEngineer = new AlgorithmEngineer();
+        } else if (fileType.equals(FileType.SYNONYM)) {
+
             // Read synonyms from the file.
             while(hasNextLine()) {
-                String[] tokens = algorithmEngineer.tokenizeWords(getNextLine());
-                String key = tokens[0];
-                String value = tokens[1];
-                AlgorithmEngineer.synonymsMap.put(key, value);
+                String[] tokens = Utility.tokenizeWords(getNextLine());
+                String key = tokens[0].trim();
+                String value = tokens[1].trim();
+                Utility.synonymsMap.put(key, value);
+            }
+            scanner.close();
+        } else if (fileType.equals(FileType.KEYWORD)) {
+            while(hasNextLine()) {
+                Utility.keywordList.add(getNextLine());
             }
             scanner.close();
         }
-
-
-
-
     }
 
     /**

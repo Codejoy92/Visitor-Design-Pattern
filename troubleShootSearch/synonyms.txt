@@ -1,1 +1,8 @@
-CPU:processor
+solution: answer
+patterns: Design
+software: application
+engineering: degree
+design: structure
+problem: issue
+formalized: optimized
+application: form

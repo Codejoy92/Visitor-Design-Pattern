@@ -1,18 +1,29 @@
 package util;
 
-public class dSeaGate implements VisitorAcceptanceI{
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-    private VisitorAcceptanceI[] dSeaGateProducts;
+import java.util.ArrayList;
+import java.util.List;
 
-    public void initializeChildren() {
-        dSeaGateProducts = new VisitorAcceptanceI[] {new ProductOne(), new ProductTwo(), new ProductThree(), new ProductFour()};
+public class DSeaGate implements VisitorAcceptanceI{
+
+    private static List<VisitorAcceptanceI> dSeaGateProducts = new ArrayList<VisitorAcceptanceI>();
+
+    public static void addChild(DSeaGate productIn) {
+
+        dSeaGateProducts.add(productIn);
     }
 
     @Override
     public void accept(VisitorI visitorI) {
 
-        for(int i = 0; i < dSeaGateProducts.length; i++) {
-            dSeaGateProducts[i].accept(visitorI);
+        for (VisitorAcceptanceI product: dSeaGateProducts) {
+            product.accept(visitorI);
         }
+    }
+
+    public List<String> getProductList() {
+
+        throw new NotImplementedException();
     }
 }

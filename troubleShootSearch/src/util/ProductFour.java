@@ -3,7 +3,7 @@ package util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductFour extends dSeaGate implements VisitorAcceptanceI {
+public class ProductFour extends DSeaGate implements VisitorAcceptanceI {
 
     private static List<String> productFourList = new ArrayList<String>();
 
@@ -15,6 +15,11 @@ public class ProductFour extends dSeaGate implements VisitorAcceptanceI {
     }
 
     public List<String> getProductFourList() {
+        return productFourList;
+    }
+
+    @Override
+    public List<String> getProductList() {
         return productFourList;
     }
 
