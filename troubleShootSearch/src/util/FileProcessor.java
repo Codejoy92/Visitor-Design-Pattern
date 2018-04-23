@@ -7,7 +7,7 @@ public class FileProcessor {
 
     private Scanner scanner = null;
 
-    FileProcessor() { 
+    public FileProcessor() { 
     	MyLogger.writeMessage("Fileprocessor construcotr:  -> ", MyLogger.DebugLevel.CONSTRUCTOR);
     }
 
@@ -37,7 +37,7 @@ public class FileProcessor {
      * @param resultIn   The result to be written to the file.
      * @param filePathIn The file to write the result in.
      */
-    public static void write(String resultIn, String filePathIn) {
+    public void write(String resultIn, String filePathIn) {
 
         File file;
         BufferedWriter bufferedWriter = null;
