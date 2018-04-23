@@ -4,6 +4,7 @@ import util.DSeaGate;
 import util.ExactMatchVisitor;
 import util.FileProcessor;
 import util.FileType;
+import util.MyLogger;
 import util.NaiveStemmingMatchVisitor;
 import util.Results;
 import util.SemanticMatchVisitor;
@@ -22,7 +23,19 @@ public class Driver {
      * @param args Program arguments
      */
     public static void main(String[] args) {
+    	if(args.length == 4) {
+			int debugValue = 0; 
+			 try {
+				 debugValue = Integer.parseInt(args[3]);
+				 MyLogger.setDebugValue(debugValue);
 
+			  } catch (NumberFormatException e) {
+			     System.out.println("Error while parsing debug level value");
+			     e.printStackTrace();
+			     System.exit(0);
+			  }
+    	} 
+    	
         //if (validate(args)) {
             buildInput(args);
             DSeaGate dSeaGateProducts = new DSeaGate();

@@ -7,7 +7,9 @@ public class FileProcessor {
 
     private Scanner scanner = null;
 
-    FileProcessor() { }
+    FileProcessor() { 
+    	MyLogger.writeMessage("Fileprocessor construcotr:  -> ", MyLogger.DebugLevel.CONSTRUCTOR);
+    }
 
     /**
      * Constructor for FileProcessor; takes in the file path and initializes the scanner with it.

@@ -56,6 +56,7 @@ public class SemanticMatchVisitor implements VisitorI {
                     Results.sb.append(System.getProperty("line.separator"));
                     Results.sb.append("Line: " + line + " Matched word: " + keyword);
                     Results.sb.append(System.getProperty("line.separator"));
+                    MyLogger.writeMessage("semantic Match for keyword:  -> " + keyword, MyLogger.DebugLevel.SEMANTIC_FOUND);
                 }
             }
         }

@@ -52,6 +52,7 @@ public class NaiveStemmingMatchVisitor implements VisitorI {
                         Results.sb.append(System.getProperty("line.separator"));
                         Results.sb.append("Line: "+ line + " Matched word: " + keyword);
                         Results.sb.append(System.getProperty("line.separator"));
+                        MyLogger.writeMessage("NaiveStemming Match for keyword:  -> " + keyword, MyLogger.DebugLevel.NAIVE_FOUND);
                     }
                 }
             }
