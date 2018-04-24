@@ -2,9 +2,6 @@ package driver;
 
 import util.DSeaGate;
 import util.ExactMatchVisitor;
-import util.FileProcessor;
-import util.FileType;
-import util.MyLogger;
 import util.NaiveStemmingMatchVisitor;
 import util.Results;
 import util.SemanticMatchVisitor;
@@ -24,17 +21,21 @@ public class Driver {
      * @param args Program arguments
      */
     public static void main(String[] args) {
-    	
-     		Utility util = new Utility();
-            DSeaGate dSeaGateProducts = new DSeaGate();
-            ExactMatchVisitor exactMatch = new ExactMatchVisitor();
-            SemanticMatchVisitor semanticMatch = new SemanticMatchVisitor();
-            NaiveStemmingMatchVisitor naiveStemmingMatch = new NaiveStemmingMatchVisitor();
-            FileProcessor processor = new FileProcessor();
-        	util.validate(args);
-            dSeaGateProducts.accept(exactMatch);
-            dSeaGateProducts.accept(semanticMatch);
-            dSeaGateProducts.accept(naiveStemmingMatch);
-            processor.write(Results.sb.toString(), args[3]);
+
+        Utility util = new Utility();
+        util.validate(args);
+
+        DSeaGate dSeaGateProducts = new DSeaGate();
+        ExactMatchVisitor exactMatch = new ExactMatchVisitor();
+        SemanticMatchVisitor semanticMatch = new SemanticMatchVisitor();
+
+        NaiveStemmingMatchVisitor naiveStemmingMatch = new NaiveStemmingMatchVisitor();
+
+        dSeaGateProducts.accept(exactMatch);
+        dSeaGateProducts.accept(semanticMatch);
+        dSeaGateProducts.accept(naiveStemmingMatch);
+
+        Results results = new Results();
+        results.writeOutput(args);
     }
 }

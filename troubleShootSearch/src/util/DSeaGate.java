@@ -18,6 +18,10 @@ public class DSeaGate implements VisitorAcceptanceI{
         dSeaGateProducts.add(productIn);
     }
 
+    /**
+     * Each product accepts a visitor one by one.
+     * @param visitorI
+     */
     @Override
     public void accept(VisitorI visitorI) {
 
@@ -26,6 +30,10 @@ public class DSeaGate implements VisitorAcceptanceI{
         }
     }
 
+    /**
+     * Used to get the ArrayList of a particular product.
+     * @return
+     */
     public List<String> getProductList() {
 
         throw new NotImplementedException();

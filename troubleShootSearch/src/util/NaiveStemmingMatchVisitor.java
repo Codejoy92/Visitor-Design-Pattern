@@ -39,6 +39,11 @@ public class NaiveStemmingMatchVisitor implements VisitorI {
         }
     }
 
+    /**
+     * Naive Stemming pattern matching algorithm logic.
+     * @param keyword
+     * @param product
+     */
     private void matchByNaiveStemming(String keyword, DSeaGate product) {
 
         String[] tokens = Utility.tokenizeKeyword(keyword);

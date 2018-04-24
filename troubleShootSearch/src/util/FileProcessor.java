@@ -25,14 +25,16 @@ public class FileProcessor {
         try {
             if (file != null) this.scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
+            System.err.println("File not found!");
+            System.exit(0);
         } catch (NullPointerException npe) {
-            System.out.println("Seems like a file was missing while passing the arguments to the program.");
+            System.err.println("Seems like a file was missing while passing the arguments to the program.");
+            System.exit(0);
         } finally { }
     }
 
     /**
-     * This method is called from Results class. It writes to the three output files.
+     * It writes to the three output files.
      *
      * @param resultIn   The result to be written to the file.
      * @param filePathIn The file to write the result in.
@@ -46,7 +48,7 @@ public class FileProcessor {
             bufferedWriter = new BufferedWriter(new FileWriter(file));
             bufferedWriter.write(resultIn);
         } catch (IOException ioe) {
-            System.out.println("One or more output files were not found!");
+            System.err.println("One or more output files were not found!");
         } finally {
             try {
                 if (bufferedWriter != null) bufferedWriter.close();
@@ -56,6 +58,12 @@ public class FileProcessor {
         }
     }
 
+    /**
+     * Takes in the file type enum which specifies which file is being read in the scanner.
+     * ArrayLists for input.txt and userInputs.txt is filled in this method.
+     * A HashMap for synonyms is built as well.
+     * @param fileType
+     */
     public void fillLists(FileType fileType) {
 
         if (fileType.equals(FileType.INPUT)) {
@@ -91,17 +99,6 @@ public class FileProcessor {
                 }
 
                 product.getProductList().add(fileLine);
-                /*
-                if (product instanceof ProductOne) {
-                    ((ProductOne) product).getProductOneList().add(fileLine);
-                } else if (product instanceof ProductTwo) {
-                    ((ProductTwo) product).getProductTwoList().add(fileLine);
-                } else if (product instanceof ProductThree) {
-                    ((ProductThree) product).getProductThreeList().add(fileLine);
-                } else if (product instanceof ProductFour) {
-                    ((ProductFour) product).getProductFourList().add(fileLine);
-                }
-                */
                 count++;
             }
             if (product instanceof ProductFour) {

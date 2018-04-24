@@ -38,6 +38,11 @@ public class ExactMatchVisitor implements VisitorI {
         }
     }
 
+    /**
+     * Exact match algorithm logic
+     * @param keyword
+     * @param product
+     */
     private void matchExactly(String keyword, DSeaGate product) {
 
         List<String> productList = product.getProductList();

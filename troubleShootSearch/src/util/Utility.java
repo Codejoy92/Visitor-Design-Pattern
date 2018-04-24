@@ -38,7 +38,6 @@ public class Utility {
 				System.exit(0);
 			}
 		}
-
 	}
     
     public void buildInput(String[] args) {

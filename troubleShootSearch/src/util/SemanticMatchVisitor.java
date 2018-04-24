@@ -38,6 +38,11 @@ public class SemanticMatchVisitor implements VisitorI {
         }
     }
 
+    /**
+     * Semantic pattern matching algorithm logic.
+     * @param keyword
+     * @param product
+     */
     private void matchSemantically(String keyword, DSeaGate product) {
 
         String[] tokens = Utility.tokenizeKeyword(keyword);
