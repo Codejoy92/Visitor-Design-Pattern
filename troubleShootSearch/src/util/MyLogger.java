@@ -4,24 +4,21 @@ public class MyLogger {
 
 	
 	public static enum DebugLevel {
-		SEMANTIC_FOUND, NAIVE_FOUND, EXACT_FOUND, CONSTRUCTOR, NONE
+		ERROR, MATCH_FOUND, CONSTRUCTOR, NONE
 	};
 
 	private static DebugLevel debugLevel;
 
 	public static void setDebugValue(int levelIn) {
 		switch (levelIn) {
+		case 0:
+			debugLevel = DebugLevel.ERROR;
+			break;
 		case 1:
-			debugLevel = DebugLevel.CONSTRUCTOR;
+			debugLevel = DebugLevel.MATCH_FOUND;
 			break;
 		case 2:
-			debugLevel = DebugLevel.SEMANTIC_FOUND;
-			break;
-		case 3:
-			debugLevel = DebugLevel.NAIVE_FOUND;
-			break;
-		case 4:
-			debugLevel = DebugLevel.EXACT_FOUND;
+			debugLevel = DebugLevel.CONSTRUCTOR;
 			break;
 		default:
 			debugLevel = DebugLevel.NONE;

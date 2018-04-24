@@ -28,7 +28,6 @@ public class Driver {
         DSeaGate dSeaGateProducts = new DSeaGate();
         ExactMatchVisitor exactMatch = new ExactMatchVisitor();
         SemanticMatchVisitor semanticMatch = new SemanticMatchVisitor();
-
         NaiveStemmingMatchVisitor naiveStemmingMatch = new NaiveStemmingMatchVisitor();
 
         dSeaGateProducts.accept(exactMatch);

@@ -5,7 +5,9 @@ import java.util.List;
 public class NaiveStemmingMatchVisitor implements VisitorI {
 
 
-    public NaiveStemmingMatchVisitor() {}
+    public NaiveStemmingMatchVisitor() {
+    	MyLogger.writeMessage("NaiveStemmingMatchVisitor Constructor called", MyLogger.DebugLevel.CONSTRUCTOR);
+    }
 
     @Override
     public void visit(ProductOne productOne) {
@@ -57,7 +59,7 @@ public class NaiveStemmingMatchVisitor implements VisitorI {
                         Results.sb.append(System.getProperty("line.separator"));
                         Results.sb.append("Line: "+ line + " Matched word: " + keyword);
                         Results.sb.append(System.getProperty("line.separator"));
-                        MyLogger.writeMessage("NaiveStemming Match for keyword:  -> " + keyword, MyLogger.DebugLevel.NAIVE_FOUND);
+                        MyLogger.writeMessage("NaiveStemming Match for keyword:  -> " + keyword, MyLogger.DebugLevel.MATCH_FOUND);
                     }
                 }
             }

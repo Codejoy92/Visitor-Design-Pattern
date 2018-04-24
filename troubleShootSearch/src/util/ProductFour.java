@@ -7,7 +7,9 @@ public class ProductFour extends DSeaGate implements VisitorAcceptanceI {
 
     private static List<String> productFourList = new ArrayList<String>();
 
-    public ProductFour() {}
+    public ProductFour() {
+    	MyLogger.writeMessage("ProductFour Constructor called", MyLogger.DebugLevel.CONSTRUCTOR);
+    }
 
     @Override
     public void accept(VisitorI visitorI) {
