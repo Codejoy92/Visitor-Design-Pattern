@@ -37,9 +37,15 @@ offense."
 
 -----------------------------------------------------------------------
 Note:
-username for git
+GitHub usernames:
 Sujoy Das: Codejoy92
 Chaitanya Khoje: ChaitanyaKhoje
+
+Input/Output files:
+
+input.txt, userInputs.txt, synonyms.txt are inside the util package.
+
+Output file(output.txt) is generated with src folder, which is inside troubleShootSearch; the parent directory.
 
 Assumptions:
 Debug value from command line will be and integer
