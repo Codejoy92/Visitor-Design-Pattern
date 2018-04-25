@@ -59,9 +59,10 @@ public class SemanticMatchVisitor implements VisitorI {
         if (!productList.isEmpty()) {
             for (String line : productList) {
                 if (line.matches("(.*)" + synonym + "(.*)") && !synonym.equals("")) {
-                    Results.sb.append("Semantic Match: ");
+                    Results.sb.append("SEMANTIC MATCH: ");
                     Results.sb.append(System.getProperty("line.separator"));
-                    Results.sb.append("Line: " + line + " Matched word: " + keyword);
+                    Results.sb.append("Line: " + line + "\nMatched word: " + keyword);
+                    Results.sb.append(System.getProperty("line.separator"));
                     Results.sb.append(System.getProperty("line.separator"));
                     MyLogger.writeMessage("semantic Match for keyword:  -> " + keyword, MyLogger.DebugLevel.MATCH_FOUND);
                 }

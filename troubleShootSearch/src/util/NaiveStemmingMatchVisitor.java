@@ -55,9 +55,10 @@ public class NaiveStemmingMatchVisitor implements VisitorI {
             if(!productList.isEmpty()) {
                 for (String line: productList) {
                     if (line.matches("(.*)"+ token +"(.*)") && !token.equals("")) {
-                        Results.sb.append("Naive Stemming Match: ");
+                        Results.sb.append("NAIVE STEMMING MATCH: ");
                         Results.sb.append(System.getProperty("line.separator"));
-                        Results.sb.append("Line: "+ line + " Matched word: " + keyword);
+                        Results.sb.append("Line: "+ line + "\nMatched word: " + keyword);
+                        Results.sb.append(System.getProperty("line.separator"));
                         Results.sb.append(System.getProperty("line.separator"));
                         MyLogger.writeMessage("NaiveStemming Match for keyword:  -> " + keyword, MyLogger.DebugLevel.MATCH_FOUND);
                     }

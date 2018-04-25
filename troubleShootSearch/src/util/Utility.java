@@ -1,5 +1,11 @@
 package util;
 
+import sun.misc.IOUtils;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,13 +49,42 @@ public class Utility {
     
     public void buildInput(String[] args) {
 
-        FileProcessor fileProcessorKeywords = new FileProcessor(args[0]);
+		InputStream keywordsPathIS = getClass().getResourceAsStream("userInputs.txt");
+		InputStream inputPathIS = getClass().getResourceAsStream("input.txt");
+		InputStream synonymPathIS = getClass().getResourceAsStream("synonyms.txt");
+
+        FileProcessor fileProcessorKeywords = new FileProcessor(keywordsPathIS);
         fileProcessorKeywords.fillLists(FileType.KEYWORD);
-        FileProcessor fileProcessorInputTxt = new FileProcessor(args[1]);   //args[1] is input1.txt
+        FileProcessor fileProcessorInputTxt = new FileProcessor(inputPathIS);   //args[1] is input1.txt
         fileProcessorInputTxt.fillLists(FileType.INPUT);
-        FileProcessor fileProcessorSynonyms = new FileProcessor(args[2]);
+        FileProcessor fileProcessorSynonyms = new FileProcessor(synonymPathIS);
         fileProcessorSynonyms.fillLists(FileType.SYNONYM);
     }
+
+    public String getStringFromInputStream(InputStream inputStream) {
+
+		BufferedReader bufferedReader = null;
+		StringBuilder stringBuilder = new StringBuilder();
+
+		String path;
+		try{
+			bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+			if ((path = bufferedReader.readLine()) != null) {
+				stringBuilder.append(path);
+			}
+		} catch (IOException ioe) {
+			System.out.println("Invalid file path");
+		} finally {
+			if (bufferedReader != null) {
+				try {
+					bufferedReader.close();
+				} catch (IOException e) {
+					System.out.println("");
+				}
+			}
+		}
+		return stringBuilder.toString();
+	}
     
 	/**
 	 * This method is used to split the keyword

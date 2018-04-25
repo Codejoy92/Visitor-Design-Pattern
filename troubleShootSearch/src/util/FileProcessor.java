@@ -16,18 +16,11 @@ public class FileProcessor {
      *
      * @param filePathIn input.txt/delete.txt path is passed for Scanner.
      */
-    public FileProcessor(String filePathIn) {
+    public FileProcessor(InputStream filePathIn) {
 
-        File file = null;
-        if (!filePathIn.isEmpty() || !filePathIn.equals("")) {
-            file = new File(filePathIn);
-        }
         try {
-            if (file != null) this.scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found!");
-            System.exit(0);
-        } catch (NullPointerException npe) {
+            if (filePathIn != null) this.scanner = new Scanner(filePathIn);
+        } catch (Exception e) {
             System.err.println("Seems like a file was missing while passing the arguments to the program.");
             System.exit(0);
         } finally { }
@@ -39,12 +32,12 @@ public class FileProcessor {
      * @param resultIn   The result to be written to the file.
      * @param filePathIn The file to write the result in.
      */
-    public void write(String resultIn, String filePathIn) {
+    public void write(String resultIn, InputStream filePathIn) {
 
         File file;
         BufferedWriter bufferedWriter = null;
         try {
-            file = new File(filePathIn);
+            file = new File("output.txt");
             bufferedWriter = new BufferedWriter(new FileWriter(file));
             bufferedWriter.write(resultIn);
         } catch (IOException ioe) {

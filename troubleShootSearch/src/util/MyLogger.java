@@ -5,7 +5,7 @@ public class MyLogger {
 	
 	public static enum DebugLevel {
 		ERROR, MATCH_FOUND, CONSTRUCTOR, NONE
-	};
+	}
 
 	private static DebugLevel debugLevel;
 

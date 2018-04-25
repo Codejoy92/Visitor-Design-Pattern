@@ -52,9 +52,10 @@ public class ExactMatchVisitor implements VisitorI {
             for (String line: productList) {
                 if (line.contains(keyword)) {
                     // There's an exact match for the given keyword in the line.
-                    Results.sb.append("Exact Match: ");
+                    Results.sb.append("EXACT MATCH: ");
                     Results.sb.append(System.getProperty("line.separator"));
-                    Results.sb.append("Line: "+ line + " Matched word: " + keyword);
+                    Results.sb.append("Line: "+ line + "\nMatched word: " + keyword);
+                    Results.sb.append(System.getProperty("line.separator"));
                     Results.sb.append(System.getProperty("line.separator"));
                     MyLogger.writeMessage("Exact Match for keyword:  -> " + keyword, MyLogger.DebugLevel.MATCH_FOUND);
                 }
