@@ -15,8 +15,6 @@ or
 ant -buildfile src/build.xml run -Darg0=1
 or
 ant -buildfile src/build.xml run -Darg0=2
-or
-ant -buildfile src/build.xml run
 
 -----------------------------------------------------------------------
 
@@ -41,10 +39,11 @@ offense."
 Note:
 username for git
 Sujoy Das: Codejoy92
+Chaitanya Khoje: ChaitanyaKhoje
 
 Assumptions:
 Debug value from command line will be and integer
 Debug levels:
-ERROR/NO-OP :-0,
-MATCH_FOUND :-1,
-CONSTRUCTOR :-2
+ERROR/NO-OP :0,
+MATCH_FOUND :1,
+CONSTRUCTOR :2

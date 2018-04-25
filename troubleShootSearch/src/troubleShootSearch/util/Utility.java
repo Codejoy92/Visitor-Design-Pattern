@@ -24,11 +24,12 @@ public class Utility {
      * @return files;String array of input and delete file paths.
      */
 	public void validate(String[] argsIn) {
+
 		if (argsIn.length > 1 || null == argsIn) {
 			System.err.println("Arguments passed were either less/more than expected!\nThe program can accepts 1 arguments.");
 			System.exit(0);
 		}
-		if(Integer.parseInt(argsIn[0]) > 2) {
+		if(argsIn.length != 1 || argsIn[0].equals("${arg0}") || (Integer.parseInt(argsIn[0]) > 2)) {
 			System.err.println("Debug arguments can take values from 0-2");
 			System.exit(0);
 		}

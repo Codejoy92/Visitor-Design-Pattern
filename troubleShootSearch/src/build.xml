@@ -1,4 +1,4 @@
-<project name="troubleShootSearch" default="compile_all" basedir="../../../../../">
+<project name="troubleShootSearch" default="compile_all" basedir="..">
 
     <property name="BUILD.compiler"       value="modern"/>
     <property name="src"                  value="src"/>
@@ -24,7 +24,7 @@
         <mkdir dir="${BUILD}/jar"/>
         <jar destfile="${BUILD}/jar/troubleShootSearch.jar" basedir="${BUILD}/classes">
             <manifest>
-                <attribute name="Main-Class" value="troubleShootSearch.troubleShootSearch.driver.Driver"/>
+                <attribute name="Main-Class" value="troubleShootSearch.driver.Driver"/>
             </manifest>
         </jar>
     </target>
@@ -34,6 +34,11 @@
     <!-- for just java files use *.java -->
 
     <target name="troubleShootSearch" depends="prepare">
+        <copy todir="${classes}/troubleShootSearch">
+            <fileset dir="src/troubleShootSearch/">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
         <javac includeantruntime="false" srcdir="${src}"
                includes="troubleShootSearch/**"
                excludes="**/package.html"
@@ -48,6 +53,14 @@
         <java jar="${BUILD}/jar/troubleShootSearch.jar"  fork="true">
             <arg value="${arg0}"/>
         </java>
+    </target>
+
+    <target name="doc" depends="troubleShootSearch" description="Create documentation">
+        <delete dir="doc/" />
+        <mkdir dir="doc/" />
+        <javadoc destdir="doc/">
+            <fileset dir="src/" />
+        </javadoc>
     </target>
 
 </project>
