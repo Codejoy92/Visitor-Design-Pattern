@@ -1,11 +1,11 @@
-package driver;
+package troubleShootSearch.driver;
 
-import util.DSeaGate;
-import util.ExactMatchVisitor;
-import util.NaiveStemmingMatchVisitor;
-import util.Results;
-import util.SemanticMatchVisitor;
-import util.Utility;
+import troubleShootSearch.util.DSeaGate;
+import troubleShootSearch.util.ExactMatchVisitor;
+import troubleShootSearch.util.NaiveStemmingMatchVisitor;
+import troubleShootSearch.util.Results;
+import troubleShootSearch.util.SemanticMatchVisitor;
+import troubleShootSearch.util.Utility;
 
 public class Driver {
 

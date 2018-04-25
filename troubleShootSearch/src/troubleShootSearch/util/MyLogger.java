@@ -1,4 +1,4 @@
-package util;
+package troubleShootSearch.util;
 
 public class MyLogger {
 

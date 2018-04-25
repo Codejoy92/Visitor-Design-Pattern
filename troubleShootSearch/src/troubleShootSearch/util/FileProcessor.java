@@ -1,4 +1,4 @@
-package util;
+package troubleShootSearch.util;
 
 import java.io.*;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ public class FileProcessor {
     private Scanner scanner = null;
 
     public FileProcessor() { 
-    	MyLogger.writeMessage("Fileprocessor construcotr:  -> ", MyLogger.DebugLevel.CONSTRUCTOR);
+    	MyLogger.writeMessage("FileProcessor Constructor called", MyLogger.DebugLevel.CONSTRUCTOR);
     }
 
     /**

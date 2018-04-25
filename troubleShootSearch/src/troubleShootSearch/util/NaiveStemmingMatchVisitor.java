@@ -1,4 +1,4 @@
-package util;
+package troubleShootSearch.util;
 
 import java.util.List;
 
@@ -60,7 +60,7 @@ public class NaiveStemmingMatchVisitor implements VisitorI {
                         Results.sb.append("Line: "+ line + "\nMatched word: " + keyword);
                         Results.sb.append(System.getProperty("line.separator"));
                         Results.sb.append(System.getProperty("line.separator"));
-                        MyLogger.writeMessage("NaiveStemming Match for keyword:  -> " + keyword, MyLogger.DebugLevel.MATCH_FOUND);
+                        MyLogger.writeMessage("NaiveStemming Match for keyword: -> " + keyword, MyLogger.DebugLevel.MATCH_FOUND);
                     }
                 }
             }

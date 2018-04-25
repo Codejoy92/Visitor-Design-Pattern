@@ -1,4 +1,4 @@
-package util;
+package troubleShootSearch.util;
 
 import java.util.List;
 
@@ -64,7 +64,7 @@ public class SemanticMatchVisitor implements VisitorI {
                     Results.sb.append("Line: " + line + "\nMatched word: " + keyword);
                     Results.sb.append(System.getProperty("line.separator"));
                     Results.sb.append(System.getProperty("line.separator"));
-                    MyLogger.writeMessage("semantic Match for keyword:  -> " + keyword, MyLogger.DebugLevel.MATCH_FOUND);
+                    MyLogger.writeMessage("Semantic Match for keyword: -> " + keyword + "; FOR SYNONYM: " + synonym, MyLogger.DebugLevel.MATCH_FOUND);
                 }
             }
         }
